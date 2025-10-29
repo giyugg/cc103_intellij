@@ -79,4 +79,8 @@ public class ParkingFeeSystemFinals {
         System.out.println("0. Exit");
         System.out.println("=========================================");
     }
+
+    public static void processNewTransaction() {
+
+    }
 }
