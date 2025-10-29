@@ -80,6 +80,19 @@ public class ParkingFeeSystemFinals {
         System.out.println("=========================================");
     }
 
+    public static String getActualVehicleType() {
+        while (true) {
+            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
+            String type = global.nextLine();
+            if (type.equalsIgnoreCase("Motorcycle") ||
+                    type.equalsIgnoreCase("Car") ||
+                    type.equalsIgnoreCase("Truck")) {
+                return type;
+            }
+            System.out.println("Invalid vehicle type. Please try again.");
+        }
+    }
+
     public static void processNewTransaction() {
         String vehicleType = getActualVehicleType();
 
