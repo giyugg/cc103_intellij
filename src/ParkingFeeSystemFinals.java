@@ -81,6 +81,9 @@ public class ParkingFeeSystemFinals {
     }
 
     public static void processNewTransaction() {
+        String vehicleType = getActualVehicleType();
 
+        System.out.print("Enter Plate Number: ");
+        String plateNumber = global.nextLine();
     }
 }
