@@ -28,3 +28,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Other Files ###
+src/lectureForFinals.java
