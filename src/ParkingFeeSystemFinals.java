@@ -80,19 +80,6 @@ public class ParkingFeeSystemFinals {
         System.out.println("=========================================");
     }
 
-    public static String getActualVehicleType() {
-        while (true) {
-            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
-            String type = global.nextLine();
-            if (type.equalsIgnoreCase("Motorcycle") ||
-                    type.equalsIgnoreCase("Car") ||
-                    type.equalsIgnoreCase("Truck")) {
-                return type;
-            }
-            System.out.println("Invalid vehicle type. Please try again.");
-        }
-    }
-
     public static boolean isValidPlateForType(String vehicleType, String plate) {
         String PatternCarAndTruck = "(?i)^[A-Z]{3} \\d{4}$"; // ABC 1234
         String PatternMotorcycle = "(?i)^\\d{3} [A-Z]{3}$";  // 123 ABC
@@ -162,5 +149,16 @@ public class ParkingFeeSystemFinals {
         }
     }
 
-    public static String getValida
+    public static String getActualVehicleType() {
+        while (true) {
+            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
+            String type = global.nextLine();
+            if (type.equalsIgnoreCase("Motorcycle") ||
+                    type.equalsIgnoreCase("Car") ||
+                    type.equalsIgnoreCase("Truck")) {
+                return type;
+            }
+            System.out.println("Invalid vehicle type. Please try again.");
+        }
+    }
 }
