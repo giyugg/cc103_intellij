@@ -200,4 +200,8 @@ public class ParkingFeeSystemFinals {
         }
         return fee;
     }
+
+    public static void generateSummary() {
+
+    }
 }
