@@ -173,4 +173,14 @@ public class ParkingFeeSystemFinals {
             System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
         }
     }
+
+    public static int getIntegerInput() {
+        while (!global.hasNextInt()) {
+            System.out.print("Invalid input. Please enter a number: ");
+            global.next();
+        }
+        int var = global.nextInt();
+        global.nextLine(); // new line
+        return var;
+    }
 }
