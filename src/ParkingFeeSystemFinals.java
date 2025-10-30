@@ -80,19 +80,6 @@ public class ParkingFeeSystemFinals {
         System.out.println("=========================================");
     }
 
-    public static String getActualVehicleType() {
-        while (true) {
-            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
-            String type = global.nextLine();
-            if (type.equalsIgnoreCase("Motorcycle") ||
-                    type.equalsIgnoreCase("Car") ||
-                    type.equalsIgnoreCase("Truck")) {
-                return type;
-            }
-            System.out.println("Invalid vehicle type. Please try again.");
-        }
-    }
-
     public static boolean isValidPlateForType(String vehicleType, String plate) {
         String PatternCarAndTruck = "(?i)^[A-Z]{3} \\d{4}$"; // ABC 1234
         String PatternMotorcycle = "(?i)^\\d{3} [A-Z]{3}$";  // 123 ABC
@@ -113,5 +100,104 @@ public class ParkingFeeSystemFinals {
                 break;
             } System.out.println("Invalid plate number format for " + vehicleType + ". Expected format: " + (vehicleType.equalsIgnoreCase("Motorcycle") ? "123 ABC" : "ABC 1234") + ". Please try again.");
         }
+        // Time in and out logic comes here.
+        System.out.println("\nEnter Time-In (24-hour format)");
+        int timeInHour = getTimeInput("Hour (0-23): ", 23);
+        int timeInMinute = getTimeInput("Minute (0-59): ", 59);
+
+        System.out.println("\nEnter Time-Out (24-hour format)");
+        int timeOutHour, timeOutMinute;
+        long durationMinutes;
+
+        while (true) {
+            timeOutHour = getTimeInput("Hour (0-23): ", 23);
+            timeOutMinute = getTimeInput("Minute (0-59): ", 59);
+
+            // Convert hours to minutes by multiplying by 60
+            long inTotal = timeInHour * 60L + timeInMinute;
+            long outTotal = timeOutHour * 60L + timeOutMinute;
+            durationMinutes = outTotal - inTotal;
+
+            if (durationMinutes >= 0) break;
+            System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
+        } double parkingFee = computeParkingFee(vehicleType, durationMinutes);
+
+        System.out.print("\nWas the ticket lost? (yes/no): ");
+        boolean isTicketLost = global.nextLine().equalsIgnoreCase("yes");
+        if (isTicketLost) {
+            parkingFee += 200.0;
+        }
+
+        System.out.print("Is the driver a Senior Citizen or PWD? (yes/no): ");
+        boolean hasDiscount = global.nextLine().equalsIgnoreCase("yes");
+        if (hasDiscount) {
+            parkingFee *= 0.80; // 20% off
+        }
+
+        // For update summary
+        displayReceipt(plateNumber, vehicleType, timeInHour, timeInMinute, timeOutHour, timeOutMinute, durationMinutes, parkingFee, isTicketLost, hasDiscount);
+        totalFeesCollected += parkingFee;
+        totalParkingMinutes += durationMinutes;
+        String type = vehicleType.toLowerCase();
+
+        if (type.equals("motorcycle")) {
+            totalMotorcycles++;
+        } else if (type.equals("car")) {
+            totalCars++;
+        } else if (type.equals("suv")) {
+            totalTrucks++;
+        }
+    }
+
+    public static String getActualVehicleType() {
+        while (true) {
+            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
+            String type = global.nextLine();
+            if (type.equalsIgnoreCase("Motorcycle") ||
+                    type.equalsIgnoreCase("Car") ||
+                    type.equalsIgnoreCase("Truck")) {
+                return type;
+            }
+            System.out.println("Invalid vehicle type. Please try again.");
+        }
+    }
+
+    public static int getTimeInput(String prompt, int max) {
+        int value;
+        while (true) {
+            System.out.print(prompt);
+            value = getIntegerInput();
+            if (value >= 0 && value <= max) {
+                return value;
+            }
+            System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
+        }
+    }
+
+    public static int getIntegerInput() {
+        while (!global.hasNextInt()) {
+            System.out.print("Invalid input. Please enter a number: ");
+            global.next();
+        }
+        int var = global.nextInt();
+        global.nextLine(); // new line
+        return var;
+    }
+
+    public static double computeParkingFee(String vehicleType, long durationMinutes) {
+        if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
+
+        double billedHours = Math.celi(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
+        double fee = 0;
+        String var = vehicleType.toLowerCase();
+
+        if (var.equals("motorcycle")) {
+            fee = (billedHours <= 1) ? 20 : 20 + (billedHours - 1) * 10.0;
+        } else if (var.equals("car")) {
+            fee = (billedHours <= 1) ? 40.0 : 40.0 + (billedHours - 1) * 20.0;
+        } else if (var.equals("suv") || var.equals("truck")) {
+            fee = (billedHours <= 1) ? 60.0 : 60.0 + (billedHours - 1) * 30.0;
+        }
+        return fee;
     }
 }
