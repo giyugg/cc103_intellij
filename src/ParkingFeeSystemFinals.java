@@ -105,7 +105,13 @@ public class ParkingFeeSystemFinals {
     public static void processNewTransaction() {
         String vehicleType = getActualVehicleType();
 
-        System.out.print("Enter Plate Number: ");
-        String plateNumber = global.nextLine();
+        String plateNumber;
+        while (true) {
+            System.out.print("Enter Plate Number: ");
+            plateNumber = global.nextLine().trim();
+            if (isValidPlateForType(vehicleType, plateNumber)) {
+                break;
+            } System.out.println("Invalid plate number format for " + vehicleType + ". Expected format: " + (vehicleType.equalsIgnoreCase("Motorcycle") ? "123 ABC" : "ABC 1234") + ". Please try again.");
+        }
     }
 }
