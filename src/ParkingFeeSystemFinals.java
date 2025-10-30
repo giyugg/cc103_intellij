@@ -136,13 +136,13 @@ public class ParkingFeeSystemFinals {
         } double parkingFee = computeParkingFee(vehicleType, durationMinutes);
 
         System.out.print("\nWas the ticket lost? (yes/no): ");
-        boolean isTicketLost = scanner.nextLine().equalsIgnoreCase("yes");
+        boolean isTicketLost = global.nextLine().equalsIgnoreCase("yes");
         if (isTicketLost) {
             parkingFee += 200.0;
         }
 
         System.out.print("Is the driver a Senior Citizen or PWD? (yes/no): ");
-        boolean hasDiscount = scanner.nextLine().equalsIgnoreCase("yes");
+        boolean hasDiscount = global.nextLine().equalsIgnoreCase("yes");
         if (hasDiscount) {
             parkingFee *= 0.80; // 20% off
         }
