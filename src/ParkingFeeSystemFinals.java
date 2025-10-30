@@ -93,6 +93,15 @@ public class ParkingFeeSystemFinals {
         }
     }
 
+    public static boolean isValidPlateForType(String vehicleType, String plate) {
+        String PatternCarAndTruck = "(?i)^[A-Z]{3} \\d{4}$"; // ABC 1234
+        String PatternMotorcycle = "(?i)^\\d{3} [A-Z]{3}$";  // 123 ABC
+        
+        if (vehicleType.equalsIgnoreCase("Motorcycle")) {
+            return plate.matches(PatternMotorcycle);
+        } return plate.matches(PatternCarAndTruck);
+    } 
+
     public static void processNewTransaction() {
         String vehicleType = getActualVehicleType();
 
