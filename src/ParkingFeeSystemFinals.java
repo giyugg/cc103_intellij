@@ -113,5 +113,54 @@ public class ParkingFeeSystemFinals {
                 break;
             } System.out.println("Invalid plate number format for " + vehicleType + ". Expected format: " + (vehicleType.equalsIgnoreCase("Motorcycle") ? "123 ABC" : "ABC 1234") + ". Please try again.");
         }
+        // Time in and out logic comes here.
+        System.out.println("\nEnter Time-In (24-hour format)");
+        int timeInHour = getTimeInput("Hour (0-23): ", 23);
+        int timeInMinute = getTimeInput("Minute (0-59): ", 59);
+
+        System.out.println("\nEnter Time-Out (24-hour format)");
+        int timeOutHour, timeOutMinute;
+        long durationMinutes;
+
+        while (true) {
+            timeOutHour = getTimeInput("Hour (0-23): ", 23);
+            timeOutMinute = getTimeInput("Minute (0-59): ", 59);
+
+            // Convert hours to minutes by multiplying by 60
+            long inTotal = timeInHour * 60L + timeInMinute;
+            long outTotal = timeOutHour * 60L + timeOutMinute;
+            durationMinutes = outTotal - inTotal;
+
+            if (durationMinutes >= 0) break;
+            System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
+        } double parkingFee = computeParkingFee(vehicleType, durationMinutes);
+
+        System.out.print("\nWas the ticket lost? (yes/no): ");
+        boolean isTicketLost = scanner.nextLine().equalsIgnoreCase("yes");
+        if (isTicketLost) {
+            parkingFee += 200.0;
+        }
+
+        System.out.print("Is the driver a Senior Citizen or PWD? (yes/no): ");
+        boolean hasDiscount = scanner.nextLine().equalsIgnoreCase("yes");
+        if (hasDiscount) {
+            parkingFee *= 0.80; // 20% off
+        }
+
+        // For update summary
+        displayReceipt(plateNumber, vehicleType, timeInHour, timeInMinute, timeOutHour, timeOutMinute, durationMinutes, parkingFee, isTicketLost, hasDiscount);
+        totalFeesCollected += parkingFee;
+        totalParkingMinutes += durationMinutes;
+        String type = vehicleType.toLowerCase();
+
+        if (type.equals("motorcycle")) {
+            totalMotorcycles++;
+        } else if (type.equals("car")) {
+            totalCars++;
+        } else if (type.equals("suv")) {
+            totalTrucks++;
+        }
     }
+
+    public static String getValida
 }
