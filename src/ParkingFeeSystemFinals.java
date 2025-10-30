@@ -183,4 +183,21 @@ public class ParkingFeeSystemFinals {
         global.nextLine(); // new line
         return var;
     }
+
+    public static double computeParkingFee(String vehicleType, long durationMinutes) {
+        if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
+
+        double billedHours = Math.celi(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
+        double fee = 0;
+        String var = vehicleType.toLowerCase();
+
+        if (var.equals("motorcycle")) {
+            fee = (billedHours <= 1) ? 20 : 20 + (billedHours - 1) * 10.0;
+        } else if (var.equals("car")) {
+            fee = (billedHours <= 1) ? 40.0 : 40.0 + (billedHours - 1) * 20.0;
+        } else if (var.equals("suv") || var.equals("truck")) {
+            fee = (billedHours <= 1) ? 60.0 : 60.0 + (billedHours - 1) * 30.0;
+        }
+        return fee;
+    }
 }
