@@ -1,0 +1,1 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/giyugg/cc103_intellij/badge)](https://www.codefactor.io/repository/github/giyugg/cc103_intellij)
