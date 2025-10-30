@@ -161,4 +161,16 @@ public class ParkingFeeSystemFinals {
             System.out.println("Invalid vehicle type. Please try again.");
         }
     }
+
+    public static int getTimeInput(String prompt, int max) {
+        int value;
+        while (true) {
+            System.out.print(prompt);
+            value = getIntegerInput();
+            if (value >= 0 && value <= max) {
+                return value;
+            }
+            System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
+        }
+    }
 }
