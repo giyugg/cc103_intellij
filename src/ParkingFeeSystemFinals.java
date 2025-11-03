@@ -35,7 +35,7 @@ public class ParkingFeeSystemFinals {
                     handleChangeCredentials();
                     break;
                 case 4:
-                    displayGroupAndStatusInformation();
+                    displayGroupMembers();
                     break;
                 case 0:
                     System.out.println("Thank you for using the Parking Fee System! Exiting...");
@@ -257,7 +257,7 @@ public class ParkingFeeSystemFinals {
 
     }
 
-    public static void displayGroupAndStatusInformation() {
+    public static void displayGroupMembers() {
 
     }
 }
