@@ -153,12 +153,9 @@ public class ParkingFeeSystemFinals {
         while (true) {
             System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
             String type = global.nextLine();
-            if (type.equalsIgnoreCase("Motorcycle") ||
-                    type.equalsIgnoreCase("Car") ||
-                    type.equalsIgnoreCase("Truck")) {
+            if (type.equalsIgnoreCase("Motorcycle") || type.equalsIgnoreCase("Car") || type.equalsIgnoreCase("Truck")) {
                 return type;
-            }
-            System.out.println("Invalid vehicle type. Please try again.");
+            } System.out.println("Invalid vehicle type. Please try again.");
         }
     }
 
@@ -169,8 +166,7 @@ public class ParkingFeeSystemFinals {
             value = getIntegerInput();
             if (value >= 0 && value <= max) {
                 return value;
-            }
-            System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
+            } System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
         }
     }
 
@@ -197,7 +193,7 @@ public class ParkingFeeSystemFinals {
     public static double computeParkingFee(String vehicleType, long durationMinutes) {
         if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
 
-        double billedHours = Math.celi(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
+        double billedHours = Math.ceil(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
         double fee = 0;
         String var = vehicleType.toLowerCase();
 
@@ -242,6 +238,18 @@ public class ParkingFeeSystemFinals {
     }
 
     public static void generateSummary() {
+        int totalVehicles = totalMotorcycles + totalCars + totalTrucks;
+        double averageDuration = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
 
+        System.out.println("\n--- DAILY SUMMARY REPORT ---");
+        System.out.println("Total Vehicles Parked by Type:");
+        System.out.println("  - Motorcycles: " + totalMotorcycles);
+        System.out.println("  - Cars: " + totalCars);
+        System.out.println("  - Trucks:  " + totalTrucks);
+        System.out.println("-----------------------------");
+        System.out.println("Total Vehicles Overall: " + totalVehicles);
+        System.out.printf("Total Fees Collected:   ₱%,.2f%n", totalFeesCollected);
+        System.out.printf("Average Parking Duration: %.2f minutes%n", averageDuration);
+        System.out.println("--- End of Report ---");
     }
 }
