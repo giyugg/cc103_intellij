@@ -144,7 +144,7 @@ public class ParkingFeeSystemFinals {
             totalMotorcycles++;
         } else if (type.equals("car")) {
             totalCars++;
-        } else if (type.equals("suv")) {
+        } else if (type.equals("truck")) {
             totalTrucks++;
         }
     }
@@ -201,7 +201,7 @@ public class ParkingFeeSystemFinals {
             fee = (billedHours <= 1) ? 20 : 20 + (billedHours - 1) * 10.0;
         } else if (var.equals("car")) {
             fee = (billedHours <= 1) ? 40.0 : 40.0 + (billedHours - 1) * 20.0;
-        } else if (var.equals("suv") || var.equals("truck")) {
+        } else if (var.equals("truck")) {
             fee = (billedHours <= 1) ? 60.0 : 60.0 + (billedHours - 1) * 30.0;
         }
         return fee;
