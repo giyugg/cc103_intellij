@@ -248,8 +248,16 @@ public class ParkingFeeSystemFinals {
         System.out.println("  - Trucks:  " + totalTrucks);
         System.out.println("-----------------------------");
         System.out.println("Total Vehicles Overall: " + totalVehicles);
-        System.out.printf("Total Fees Collected:   ₱%,.2f%n", totalFeesCollected);
+        System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
         System.out.printf("Average Parking Duration: %.2f minutes%n", averageDuration);
         System.out.println("--- End of Report ---");
+    }
+
+    public static void handleChangeCredentials() {
+
+    }
+
+    public static void displayGroupAndStatusInformation() {
+
     }
 }
