@@ -153,12 +153,9 @@ public class ParkingFeeSystemFinals {
         while (true) {
             System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
             String type = global.nextLine();
-            if (type.equalsIgnoreCase("Motorcycle") ||
-                    type.equalsIgnoreCase("Car") ||
-                    type.equalsIgnoreCase("Truck")) {
+            if (type.equalsIgnoreCase("Motorcycle") || type.equalsIgnoreCase("Car") || type.equalsIgnoreCase("Truck")) {
                 return type;
-            }
-            System.out.println("Invalid vehicle type. Please try again.");
+            } System.out.println("Invalid vehicle type. Please try again.");
         }
     }
 
@@ -169,8 +166,7 @@ public class ParkingFeeSystemFinals {
             value = getIntegerInput();
             if (value >= 0 && value <= max) {
                 return value;
-            }
-            System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
+            } System.out.println("Invalid input. Please enter a value between 0 and " + max + ".");
         }
     }
 
@@ -184,10 +180,20 @@ public class ParkingFeeSystemFinals {
         return var;
     }
 
+    public static double getDoubleInput() {
+        while (!global.hasNextDouble()) {
+            System.out.print("Invalid input. Please enter a valid amount: ");
+            global.next();
+        }
+        double var = global.nextDouble();
+        global.nextLine();
+        return var;
+    }
+
     public static double computeParkingFee(String vehicleType, long durationMinutes) {
         if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
 
-        double billedHours = Math.celi(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
+        double billedHours = Math.ceil(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
         double fee = 0;
         String var = vehicleType.toLowerCase();
 
@@ -199,5 +205,59 @@ public class ParkingFeeSystemFinals {
             fee = (billedHours <= 1) ? 60.0 : 60.0 + (billedHours - 1) * 30.0;
         }
         return fee;
+    }
+
+    public static void displayReceipt(String plate, String type,
+                                      int tInHour, int tInMinute, int tOutHour, int tOutMinute,
+                                      long duration, double totalFee, boolean lost, boolean discount) {
+        System.out.println("\n--- PARKING RECEIPT ---");
+        System.out.println("Plate Number: " + plate);
+        System.out.println("Vehicle Type: " + type);
+        System.out.printf("Time In:        %02d:%02d%n", tInHour, tInMinute);
+        System.out.printf("Time Out:       %02d:%02d%n", tOutHour, tOutMinute);
+        System.out.printf("Duration:       %d hours and %d minutes%n", (duration / 60), (duration % 60));
+        if (lost) {
+            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
+        }
+        if (discount) {
+            System.out.println("Discount (20%): Applied");
+        }
+        System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
+        System.out.println("-------------------------");
+
+        double cash = 0;
+        while (cash < totalFee) {
+            System.out.print("Enter cash received: ");
+            cash = getDoubleInput();
+            if (cash < totalFee) {
+                System.out.println("Insufficient cash. Please enter an amount >= total fee.");
+            }
+        }
+        System.out.printf("Change:       PHP%,.2f%n", (cash - totalFee));
+        System.out.println("--- Thank You! ---");
+    }
+
+    public static void generateSummary() {
+        int totalVehicles = totalMotorcycles + totalCars + totalTrucks;
+        double averageDuration = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
+
+        System.out.println("\n--- DAILY SUMMARY REPORT ---");
+        System.out.println("Total Vehicles Parked by Type:");
+        System.out.println("  - Motorcycles: " + totalMotorcycles);
+        System.out.println("  - Cars: " + totalCars);
+        System.out.println("  - Trucks:  " + totalTrucks);
+        System.out.println("-----------------------------");
+        System.out.println("Total Vehicles Overall: " + totalVehicles);
+        System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
+        System.out.printf("Average Parking Duration: %.2f minutes%n", averageDuration);
+        System.out.println("--- End of Report ---");
+    }
+
+    public static void handleChangeCredentials() {
+
+    }
+
+    public static void displayGroupAndStatusInformation() {
+
     }
 }
