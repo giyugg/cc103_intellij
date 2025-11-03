@@ -61,7 +61,7 @@ public class ParkingFeeSystemFinals {
                 System.out.println("\nYou have successfully logged in! Welcome " + username);
                 return true;
             } else {
-                System.out.println("You have entered an invalid username or password. You only have " + (2 - loginCtr) + "attempts remaining.");
+                System.out.println("You have entered an invalid username or password. You only have " + (2 - loginCtr) + " attempts remaining.");
             }
         }
         return false;
