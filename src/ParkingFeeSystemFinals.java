@@ -211,6 +211,36 @@ public class ParkingFeeSystemFinals {
         return fee;
     }
 
+    public static void displayReceipt(String plate, String type,
+                                      int tInHour, int tInMinute, int tOutHour, int tOutMinute,
+                                      long duration, double totalFee, boolean lost, boolean discount) {
+        System.out.println("\n--- PARKING RECEIPT ---");
+        System.out.println("Plate Number: " + plate);
+        System.out.println("Vehicle Type: " + type);
+        System.out.printf("Time In:        %02d:%02d%n", tInHour, tInMinute);
+        System.out.printf("Time Out:       %02d:%02d%n", tOutHour, tOutMinute);
+        System.out.printf("Duration:       %d hours and %d minutes%n", (duration / 60), (duration % 60));
+        if (lost) {
+            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
+        }
+        if (discount) {
+            System.out.println("Discount (20%): Applied");
+        }
+        System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
+        System.out.println("-------------------------");
+
+        double cash = 0;
+        while (cash < totalFee) {
+            System.out.print("Enter cash received: ");
+            cash = getDoubleInput();
+            if (cash < totalFee) {
+                System.out.println("Insufficient cash. Please enter an amount >= total fee.");
+            }
+        }
+        System.out.printf("Change:       PHP%,.2f%n", (cash - totalFee));
+        System.out.println("--- Thank You! ---");
+    }
+
     public static void generateSummary() {
 
     }
