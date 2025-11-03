@@ -220,7 +220,7 @@ public class ParkingFeeSystemFinals {
             System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
         }
         if (discount) {
-            System.out.println("Discount (20%): Applied");
+            System.out.println("\nDiscount (20%): Applied");
         }
         System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
         System.out.println("-------------------------");
