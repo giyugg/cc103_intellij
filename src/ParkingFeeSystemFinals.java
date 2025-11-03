@@ -254,10 +254,29 @@ public class ParkingFeeSystemFinals {
     }
 
     public static void handleChangeCredentials() {
-
+        System.out.println("\n--- Change Credentials ---");
+        System.out.print("Enter current password to confirm: ");
+        String currentPass = global.nextLine();
+        if (!currentPass.equals(password)) {
+            System.out.println("Incorrect password. Action cancelled.");
+            return;
+        }
+        System.out.print("Enter new username: ");
+        username = global.nextLine();
+        System.out.print("Enter new password: ");
+        password = global.nextLine();
+        System.out.println("Credentials updated successfully.");
     }
 
     public static void displayGroupMembers() {
-
+        System.out.println("\n--- Group Member and Status Information ---");
+        System.out.println("Project: Parking Fee System");
+        System.out.println("Group Members:");
+        System.out.println(" - Acuña, Kyle A. - Project Leader / Programmer");
+        System.out.println(" - Fajardo, Mar Luis N. - Lead Documentation");
+        System.out.println(" - Bueno, Jazelle Angeli S. - Tester / Presenter");
+        System.out.println(" - Guardian, Ruby Mar C. - Tester / Presenter");
+        System.out.println(" - Quinamot, Kristine Rica D. - Tester / Presenter");
+        System.out.println("-------------------------------------------");
     }
 }
