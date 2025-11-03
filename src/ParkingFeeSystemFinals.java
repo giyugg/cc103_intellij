@@ -184,6 +184,16 @@ public class ParkingFeeSystemFinals {
         return var;
     }
 
+    public static double getDoubleInput() {
+        while (!global.hasNextDouble()) {
+            System.out.print("Invalid input. Please enter a valid amount: ");
+            global.next();
+        }
+        double var = global.nextDouble();
+        global.nextLine();
+        return var;
+    }
+
     public static double computeParkingFee(String vehicleType, long durationMinutes) {
         if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
 
