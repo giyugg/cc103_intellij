@@ -122,16 +122,16 @@ public class ParkingFeeSystemFinals {
             System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
         } double parkingFee = computeParkingFee(vehicleType, durationMinutes);
 
-        System.out.print("\nWas the ticket lost? (yes/no): ");
-        boolean isTicketLost = global.nextLine().equalsIgnoreCase("yes");
-        if (isTicketLost) {
-            parkingFee += 200.0;
-        }
-
-        System.out.print("Is the driver a Senior Citizen or PWD? (yes/no): ");
+        System.out.print("\nIs the driver a Senior Citizen or PWD? (yes/no): ");
         boolean hasDiscount = global.nextLine().equalsIgnoreCase("yes");
         if (hasDiscount) {
             parkingFee *= 0.80; // 20% off
+        }
+
+        System.out.print("Was the ticket lost? (yes/no): ");
+        boolean isTicketLost = global.nextLine().equalsIgnoreCase("yes");
+        if (isTicketLost) {
+            parkingFee += 200.0;
         }
 
         // For update summary
