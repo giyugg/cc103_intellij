@@ -144,16 +144,16 @@ public class ParkingFeeSystemFinals {
             totalMotorcycles++;
         } else if (type.equals("car")) {
             totalCars++;
-        } else if (type.equals("truck")) {
+        } else if (type.equals("suv")) {
             totalTrucks++;
         }
     }
 
     public static String getActualVehicleType() {
         while (true) {
-            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck): ");
+            System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck/SUV): ");
             String type = global.nextLine();
-            if (type.equalsIgnoreCase("Motorcycle") || type.equalsIgnoreCase("Car") || type.equalsIgnoreCase("Truck")) {
+            if (type.equalsIgnoreCase("Motorcycle") || type.equalsIgnoreCase("Car") || type.equalsIgnoreCase("Truck")|| type.equalsIgnoreCase("SUV")) {
                 return type;
             } System.out.println("Invalid vehicle type. Please try again.");
         }
@@ -201,7 +201,7 @@ public class ParkingFeeSystemFinals {
             fee = (billedHours <= 1) ? 20 : 20 + (billedHours - 1) * 10.0;
         } else if (var.equals("car")) {
             fee = (billedHours <= 1) ? 40.0 : 40.0 + (billedHours - 1) * 20.0;
-        } else if (var.equals("truck")) {
+        } else if (var.equals("suv") || var.equals("truck")) {
             fee = (billedHours <= 1) ? 60.0 : 60.0 + (billedHours - 1) * 30.0;
         }
         return fee;
@@ -245,7 +245,7 @@ public class ParkingFeeSystemFinals {
         System.out.println("Total Vehicles Parked by Type:");
         System.out.println("  - Motorcycles: " + totalMotorcycles);
         System.out.println("  - Cars: " + totalCars);
-        System.out.println("  - Trucks:  " + totalTrucks);
+        System.out.println("  - Trucks/SUV:  " + totalTrucks);
         System.out.println("-----------------------------");
         System.out.println("Total Vehicles Overall: " + totalVehicles);
         System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
