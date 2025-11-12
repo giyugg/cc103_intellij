@@ -193,7 +193,7 @@ public class ParkingFeeSystemFinals {
     public static double computeParkingFee(String vehicleType, long durationMinutes) {
         if (durationMinutes <= 30) return 0; // the 30 minutes free or no charge yet
 
-        double billedHours = Math.ceil(durationMinutes / 60); // ensures that even a fraction of an hour is treated as a complete hour
+        double billedHours = Math.ceil(durationMinutes / 60.0);
         double fee = 0;
         String var = vehicleType.toLowerCase();
 
