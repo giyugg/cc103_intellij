@@ -274,13 +274,21 @@ public class ParkingFeeSystemFinals {
 
     public static void displayGroupMembers() {
         System.out.println("\n--- Group Member and Status Information ---");
-        System.out.println("Project: Parking Fee System");
-        System.out.println("Group Members:");
-        System.out.println(" - Acuña, Kyle A. - Project Leader / Programmer");
-        System.out.println(" - Fajardo, Mar Luis N. - Lead Documentation");
-        System.out.println(" - Bueno, Jazelle Angeli S. - Tester / Presenter");
-        System.out.println(" - Guardian, Ruby Mar C. - Tester / Presenter");
-        System.out.println(" - Quinamot, Kristine Rica D. - Tester / Presenter");
+        System.out.println();
+        System.out.println("Presented by:");
+        System.out.println(" - Acuña, Kyle A. - Project Leader / Code Analysis / Programmer");
+        System.out.println("   giyu@giyugg.org | 09985793696\n");
+        System.out.println(" - Fajardo, Mar Luis N. - Programmer / Lead Documentation");
+        System.out.println("   fajardo.marluis.bsis@gmail.com | 09960120367\n");
+        System.out.println(" - Bueno, Jazelle Angeli S. - Programmer  Tester / Presenter");
+        System.out.println("   buenojazelle7@gmail.com | 09216401558\n");
+        System.out.println(" - Guardian, Ruby Mar C. - Programmer / Tester / Presenter");
+        System.out.println("   guardian.ruby.bsis@gmail.com | 09050930902\n");
+        System.out.println(" - Quinamot, Kristine Rica D. - Programmer / Tester / Presenter");
+        System.out.println("   kristinerica95@gmail.com | 09675073261\n");
+        System.out.println("   Bachelor of Science in Information Systems, 1B-G2\n");
+        System.out.println("Presented to: Engr. Evelyn C. Samson");
+        System.out.println("                     Instructor");
         System.out.println("-------------------------------------------");
     }
 }
