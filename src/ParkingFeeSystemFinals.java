@@ -240,7 +240,6 @@ public class ParkingFeeSystemFinals {
     public static void generateSummary() {
         int totalVehicles = totalMotorcycles + totalCars + totalTrucksSUV;
         double averageDurationMinutes = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
-        double averageDurationHours = averageDurationMinutes / 60.0;
 
         System.out.println("\n--- DAILY SUMMARY REPORT ---");
         System.out.println("Total Vehicles Parked by Type:");
