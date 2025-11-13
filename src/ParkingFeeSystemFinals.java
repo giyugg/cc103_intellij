@@ -8,7 +8,7 @@ public class ParkingFeeSystemFinals {
     // Vehicle types
     static int totalMotorcycles = 0;
     static int totalCars = 0;
-    static int totalTrucks = 0;
+    static int totalTrucksSUV = 0;
     static double totalFeesCollected = 0;
     static long totalParkingMinutes = 0;
 
@@ -145,7 +145,7 @@ public class ParkingFeeSystemFinals {
         } else if (type.equals("car")) {
             totalCars++;
         } else if (type.equals("suv")) {
-            totalTrucks++;
+            totalTrucksSUV++;
         }
     }
 
@@ -238,14 +238,14 @@ public class ParkingFeeSystemFinals {
     }
 
     public static void generateSummary() {
-        int totalVehicles = totalMotorcycles + totalCars + totalTrucks;
+        int totalVehicles = totalMotorcycles + totalCars + totalTrucksSUV;
         double averageDuration = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
 
         System.out.println("\n--- DAILY SUMMARY REPORT ---");
         System.out.println("Total Vehicles Parked by Type:");
         System.out.println("  - Motorcycles: " + totalMotorcycles);
         System.out.println("  - Cars: " + totalCars);
-        System.out.println("  - Trucks/SUV:  " + totalTrucks);
+        System.out.println("  - Trucks/SUV:  " + totalTrucksSUV);
         System.out.println("-----------------------------");
         System.out.println("Total Vehicles Overall: " + totalVehicles);
         System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
