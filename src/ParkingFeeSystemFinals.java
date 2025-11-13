@@ -239,7 +239,8 @@ public class ParkingFeeSystemFinals {
 
     public static void generateSummary() {
         int totalVehicles = totalMotorcycles + totalCars + totalTrucksSUV;
-        double averageDuration = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
+        double averageDurationMinutes = (totalVehicles > 0) ? ((double) totalParkingMinutes / totalVehicles) : 0.0;
+        double averageDurationHours = averageDurationMinutes / 60.0;
 
         System.out.println("\n--- DAILY SUMMARY REPORT ---");
         System.out.println("Total Vehicles Parked by Type:");
@@ -249,7 +250,11 @@ public class ParkingFeeSystemFinals {
         System.out.println("-----------------------------");
         System.out.println("Total Vehicles Overall: " + totalVehicles);
         System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
-        System.out.printf("Average Parking Duration: %.2f minutes%n", averageDuration);
+
+        int avgHoursPart = (int) averageDurationMinutes / 60;
+        int avgMinutesPart = (int) Math.round(averageDurationMinutes % 60);
+
+        System.out.printf("Average Parking Duration: %d hours %d minutes%n", avgHoursPart, avgMinutesPart);
         System.out.println("--- End of Report ---");
     }
 
