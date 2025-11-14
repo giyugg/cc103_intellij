@@ -146,6 +146,8 @@ public class ParkingFeeSystemFinals {
             totalCars++;
         } else if (type.equals("suv")) {
             totalTrucksSUV++;
+        } else if (type.equals("truck")) {
+            totalTrucksSUV++;
         }
     }
 
@@ -229,8 +231,12 @@ public class ParkingFeeSystemFinals {
         while (cash < totalFee) {
             System.out.print("Enter cash received: ");
             cash = getDoubleInput();
+            if (cash < 0) {
+                System.out.println("Cash cannot be negative. Try again.");
+                continue; // go back and ask again
+            }
             if (cash < totalFee) {
-                System.out.println("Insufficient cash. Please enter an amount >= total fee.");
+                System.out.println("Insufficient amount. Enter at least PHP " + totalFee);
             }
         }
         System.out.printf("Change:       PHP%,.2f%n", (cash - totalFee));
@@ -250,8 +256,8 @@ public class ParkingFeeSystemFinals {
         System.out.println("Total Vehicles Overall: " + totalVehicles);
         System.out.printf("Total Fees Collected:   PHP%,.2f%n", totalFeesCollected);
 
-        int avgHoursPart = (int) averageDurationMinutes / 60;
-        int avgMinutesPart = (int) Math.round(averageDurationMinutes % 60);
+        int avgHoursPart = (int)(averageDurationMinutes / 60);
+        int avgMinutesPart = (int)(averageDurationMinutes % 60);
 
         System.out.printf("Average Parking Duration: %d hours %d minutes%n", avgHoursPart, avgMinutesPart);
         System.out.println("--- End of Report ---");
