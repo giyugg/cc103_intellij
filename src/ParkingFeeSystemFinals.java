@@ -286,7 +286,7 @@ public class ParkingFeeSystemFinals {
         System.out.println("   giyu@giyugg.org | 09985793696\n");
         System.out.println(" - Fajardo, Mar Luis N. - Programmer / Lead Documentation");
         System.out.println("   fajardo.marluis.bsis@gmail.com | 09960120367\n");
-        System.out.println(" - Bueno, Jazelle Angeli S. - Programmer  Tester / Presenter");
+        System.out.println(" - Bueno, Jazelle Angeli S. - Programmer / Tester / Presenter");
         System.out.println("   buenojazelle7@gmail.com | 09216401558\n");
         System.out.println(" - Guardian, Ruby Mar C. - Programmer / Tester / Presenter");
         System.out.println("   guardian.ruby.bsis@gmail.com | 09050930902\n");
