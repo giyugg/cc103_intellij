@@ -316,7 +316,7 @@ public class BSIS1BG2Group1 {
     public static VehicleInfo inputVehicleInfo() {
         VehicleInfo info = new VehicleInfo();
 
-        info.vehicleType = getActualVehicleType();
+        info.vehicleType = InputVehicleInfo();
 
         while (true) {
             System.out.print("Enter Plate Number: ");
