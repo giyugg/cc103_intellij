@@ -101,9 +101,14 @@ public class BSIS1BG2Group1 {
             long outTotal = timeOutHour * 60L + timeOutMinute;
             durationMinutes = outTotal - inTotal;
 
-            if (durationMinutes >= 0) break;
-            System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
-        } double parkingFee = computeParkingFee(vehicleType, durationMinutes);
+        // Night time fee
+        int nightHours = getNightHours(info.timeInHour, info.timeInMinute, info.timeOutHour, info.timeOutMinute);
+        double nightFee = nightHours * 10.0;
+        if (nightHours > 0) {
+            System.out.println("Night Hours: " + nightHours + " hour(s)");
+            System.out.println("Night Charge: PHP " + nightFee);
+        }
+        parkingFee += nightFee;
 
         System.out.print("\nIs the driver a Senior Citizen or PWD? (yes/no): ");
         boolean hasDiscount = global.nextLine().equalsIgnoreCase("yes");
