@@ -348,7 +348,6 @@ public class BSIS1BG2Group1 {
             if (outTotal - inTotal >= 0) break;
             System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
         }
-
         return info;
     }
 }
