@@ -202,8 +202,8 @@ public class BSIS1BG2Group1 {
 
         if (outTotal < inTotal) outTotal += 24 * 60;
 
-        int nightStart = 22 * 60;
-        int nightEnd = 6 * 60 + 24 * 60;
+        int nightStart = 22 * 60; // 22:00
+        int nightEnd = (24 * 60) + 6 * 60; // next day 06:00 (1440 + 360 = 1800)
 
         int overlapStart = Math.max(inTotal, nightStart);
         int overlapEnd = Math.min(outTotal, nightEnd);
