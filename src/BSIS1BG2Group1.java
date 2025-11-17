@@ -92,9 +92,8 @@ public class BSIS1BG2Group1 {
     public static void processNewTransaction() {
         VehicleInfo info = inputVehicleInfo();
 
-        while (true) {
-            timeOutHour = getTimeInput("Hour (0-23): ", 23);
-            timeOutMinute = getTimeInput("Minute (0-59): ", 59);
+        long durationMinutes = (info.timeOutHour * 60L + info.timeOutMinute) - (info.timeInHour * 60L + info.timeInMinute);
+        if (durationMinutes < 0) durationMinutes += 24 * 60; // cross midnight
 
         // Base parking fee
         double parkingFee = computeParkingFee(info.vehicleType, durationMinutes);
