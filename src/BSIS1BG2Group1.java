@@ -138,7 +138,7 @@ public class BSIS1BG2Group1 {
         }
     }
 
-    public static String getActualVehicleType() {
+    public static String InputVehicleInfo() {
         while (true) {
             System.out.print("Enter Vehicle Type (Motorcycle, Car, Truck/SUV): ");
             String type = global.nextLine();
