@@ -96,10 +96,8 @@ public class BSIS1BG2Group1 {
             timeOutHour = getTimeInput("Hour (0-23): ", 23);
             timeOutMinute = getTimeInput("Minute (0-59): ", 59);
 
-            // Convert hours to minutes by multiplying by 60
-            long inTotal = timeInHour * 60L + timeInMinute;
-            long outTotal = timeOutHour * 60L + timeOutMinute;
-            durationMinutes = outTotal - inTotal;
+        // Base parking fee
+        double parkingFee = computeParkingFee(info.vehicleType, durationMinutes);
 
         // Night time fee
         int nightHours = getNightHours(info.timeInHour, info.timeInMinute, info.timeOutHour, info.timeOutMinute);
