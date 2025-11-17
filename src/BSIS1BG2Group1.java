@@ -229,6 +229,7 @@ public class BSIS1BG2Group1 {
         if (lost) {
             System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
         }
+        if (nightFee > 0) System.out.printf("Night Charge: PHP%,.2f%n", nightFee);
         System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
         System.out.println("-------------------------");
 
