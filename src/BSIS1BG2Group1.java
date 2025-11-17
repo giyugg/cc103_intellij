@@ -216,7 +216,7 @@ public class BSIS1BG2Group1 {
 
     public static void displayReceipt(String plate, String type,
                                       int tInHour, int tInMinute, int tOutHour, int tOutMinute,
-                                      long duration, double totalFee, boolean lost, boolean discount) {
+                                      long duration, double totalFee, boolean lost, boolean discount, double nightFee) {
         System.out.println("\n--- PARKING RECEIPT ---");
         System.out.println("Plate Number: " + plate);
         System.out.println("Vehicle Type: " + type);
