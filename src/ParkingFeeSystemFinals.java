@@ -218,11 +218,11 @@ public class ParkingFeeSystemFinals {
         System.out.printf("Time In:        %02d:%02d%n", tInHour, tInMinute);
         System.out.printf("Time Out:       %02d:%02d%n", tOutHour, tOutMinute);
         System.out.printf("Duration:       %d hours and %d minutes%n", (duration / 60), (duration % 60));
-        if (lost) {
-            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
-        }
         if (discount) {
             System.out.println("\nDiscount (20%): Applied");
+        }
+        if (lost) {
+            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
         }
         System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
         System.out.println("-------------------------");
