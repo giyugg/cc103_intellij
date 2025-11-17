@@ -121,7 +121,7 @@ public class BSIS1BG2Group1 {
         displayReceipt(plateNumber, vehicleType, timeInHour, timeInMinute, timeOutHour, timeOutMinute, durationMinutes, parkingFee, isTicketLost, hasDiscount);
         totalFeesCollected += parkingFee;
         totalParkingMinutes += durationMinutes;
-        String type = vehicleType.toLowerCase();
+        String type = info.vehicleType.toLowerCase();
 
         if (type.equals("motorcycle")) {
             totalMotorcycles++;
