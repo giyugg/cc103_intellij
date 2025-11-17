@@ -303,4 +303,52 @@ public class BSIS1BG2Group1 {
         System.out.println("                     Instructor");
         System.out.println("-------------------------------------------");
     }
+
+    public static class VehicleInfo {
+        String vehicleType;
+        String plateNumber;
+        int timeInHour;
+        int timeInMinute;
+        int timeOutHour;
+        int timeOutMinute;
+    }
+
+    public static VehicleInfo inputVehicleInfo() {
+        VehicleInfo info = new VehicleInfo();
+
+        info.vehicleType = getActualVehicleType();
+
+        while (true) {
+            System.out.print("Enter Plate Number: ");
+            String plateNumber = global.nextLine().trim();
+            if (isValidPlateForType(info.vehicleType, plateNumber)) {
+                info.plateNumber = plateNumber;
+                break;
+            }
+            System.out.println("Invalid plate number format for " + info.vehicleType + ". Expected format: " + (info.vehicleType.equalsIgnoreCase("Motorcycle") ? "123 ABC" : "ABC 1234") + ". Please try again.");
+        }
+
+        // Time-In
+        System.out.println("\nEnter Time-In (24-hour format)");
+        info.timeInHour = getTimeInput("Hour (0-23): ", 23);
+        info.timeInMinute = getTimeInput("Minute (0-59): ", 59);
+
+        // Time-Out
+        System.out.println("\nEnter Time-Out (24-hour format)");
+        while (true) {
+            info.timeOutHour = getTimeInput("Hour (0-23): ", 23);
+            info.timeOutMinute = getTimeInput("Minute (0-59): ", 59);
+
+            long inTotal = info.timeInHour * 60L + info.timeInMinute;
+            long outTotal = info.timeOutHour * 60L + info.timeOutMinute;
+
+            // Allow crossing midnight
+            if (outTotal < inTotal) outTotal += 24 * 60;
+
+            if (outTotal - inTotal >= 0) break;
+            System.out.println("Error: Time-Out cannot be earlier than Time-In. Please enter again.");
+        }
+
+        return info;
+    }
 }
