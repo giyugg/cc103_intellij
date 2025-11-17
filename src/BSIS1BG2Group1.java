@@ -218,11 +218,11 @@ public class BSIS1BG2Group1 {
         System.out.printf("Time In:        %02d:%02d%n", tInHour, tInMinute);
         System.out.printf("Time Out:       %02d:%02d%n", tOutHour, tOutMinute);
         System.out.printf("Duration:       %d hours and %d minutes%n", (duration / 60), (duration % 60));
-        if (lost) {
-            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
-        }
         if (discount) {
             System.out.println("\nDiscount (20%): Applied");
+        }
+        if (lost) {
+            System.out.printf("Lost Ticket Penalty: PHP%,.2f%n", 200.0);
         }
         System.out.printf("TOTAL FEE:    PHP%,.2f%n", totalFee);
         System.out.println("-------------------------");
@@ -286,7 +286,7 @@ public class BSIS1BG2Group1 {
         System.out.println("   giyu@giyugg.org | 09985793696\n");
         System.out.println(" - Fajardo, Mar Luis N. - Programmer / Lead Documentation");
         System.out.println("   fajardo.marluis.bsis@gmail.com | 09960120367\n");
-        System.out.println(" - Bueno, Jazelle Angeli S. - Programmer  Tester / Presenter");
+        System.out.println(" - Bueno, Jazelle Angeli S. - Programmer / Tester / Presenter");
         System.out.println("   buenojazelle7@gmail.com | 09216401558\n");
         System.out.println(" - Guardian, Ruby Mar C. - Programmer / Tester / Presenter");
         System.out.println("   guardian.ruby.bsis@gmail.com | 09050930902\n");
