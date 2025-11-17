@@ -117,8 +117,10 @@ public class BSIS1BG2Group1 {
             parkingFee += 200.0;
         }
 
-        // For update summary
-        displayReceipt(plateNumber, vehicleType, timeInHour, timeInMinute, timeOutHour, timeOutMinute, durationMinutes, parkingFee, isTicketLost, hasDiscount);
+        // Display receipt
+        displayReceipt(info.plateNumber, info.vehicleType, info.timeInHour, info.timeInMinute, info.timeOutHour, info.timeOutMinute, durationMinutes, parkingFee, isTicketLost, hasDiscount, nightFee);
+
+        // Update totals
         totalFeesCollected += parkingFee;
         totalParkingMinutes += durationMinutes;
         String type = info.vehicleType.toLowerCase();
