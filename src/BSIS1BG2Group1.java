@@ -90,24 +90,7 @@ public class BSIS1BG2Group1 {
     }
 
     public static void processNewTransaction() {
-        String vehicleType = getActualVehicleType();
-
-        String plateNumber;
-        while (true) {
-            System.out.print("Enter Plate Number: ");
-            plateNumber = global.nextLine().trim();
-            if (isValidPlateForType(vehicleType, plateNumber)) {
-                break;
-            } System.out.println("Invalid plate number format for " + vehicleType + ". Expected format: " + (vehicleType.equalsIgnoreCase("Motorcycle") ? "123 ABC" : "ABC 1234") + ". Please try again.");
-        }
-        // Time in and out logic comes here.
-        System.out.println("\nEnter Time-In (24-hour format)");
-        int timeInHour = getTimeInput("Hour (0-23): ", 23);
-        int timeInMinute = getTimeInput("Minute (0-59): ", 59);
-
-        System.out.println("\nEnter Time-Out (24-hour format)");
-        int timeOutHour, timeOutMinute;
-        long durationMinutes;
+        VehicleInfo info = inputVehicleInfo();
 
         while (true) {
             timeOutHour = getTimeInput("Hour (0-23): ", 23);
