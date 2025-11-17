@@ -209,6 +209,24 @@ public class BSIS1BG2Group1 {
         return fee;
     }
 
+    public static int getNightHours(int inHour, int inMinute, int outHour, int outMinute) {
+        int inTotal = inHour * 60 + inMinute;
+        int outTotal = outHour * 60 + outMinute;
+
+        if (outTotal < inTotal) outTotal += 24 * 60;
+
+        int nightStart = 22 * 60;
+        int nightEnd = 6 * 60 + 24 * 60;
+
+        int overlapStart = Math.max(inTotal, nightStart);
+        int overlapEnd = Math.min(outTotal, nightEnd);
+
+        if (overlapEnd <= overlapStart) return 0;
+        
+        int minutesInNight = overlapEnd - overlapStart;
+        return (int) Math.ceil(minutesInNight / 60.0);
+    }
+
     public static void displayReceipt(String plate, String type,
                                       int tInHour, int tInMinute, int tOutHour, int tOutMinute,
                                       long duration, double totalFee, boolean lost, boolean discount) {
